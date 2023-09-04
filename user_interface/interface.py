@@ -3,8 +3,8 @@ import dearpygui.dearpygui as dpg
 from controller.tesseract_settings import TesseractSettings as TessSet
 
 from user_interface.window_settings import WindowSettings as WinSet
-from user_interface.view_labels import Labels as Label
-from user_interface.view_messages import UserTexts
+from user_interface.labels import Labels as Label
+from user_interface.messages import UserTexts
 
 
 class View:
