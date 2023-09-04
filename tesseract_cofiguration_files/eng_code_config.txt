@@ -1,0 +1,7 @@
+# eng config
+tessedit_char_whitelist 0123456789@.,-:; ( ) { } [ ]"'?!/\|*^`~&%><#=_ """
+tessedit_pageseg_mode 11
+tessedit_ocr_engine_mode 2
+language_model_penalty_non_dict_word 0.1
+language_model_penalty_non_freq_dict_word 0.15
+language_model_penalty_punc 0.05
