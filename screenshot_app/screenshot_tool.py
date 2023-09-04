@@ -87,5 +87,3 @@ if __name__ == "__main__":
     screenshot = get_screenshot()
     if isinstance(screenshot, PIL.Image.Image):
         show_image(screenshot)
-
-
