@@ -59,11 +59,3 @@ class View:
                 # Massages part
                 with dpg.group(horizontal=True, show=False) as self.messages_panel:
                     self.user_message = dpg.add_text()
-
-
-
-
-
-
-
-

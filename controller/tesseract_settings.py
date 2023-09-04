@@ -1,23 +1,18 @@
-from file_path.bild_file_path import bild_path
+from path_manager.bild_file_path import bild_path
 
 
 class TesseractSettings:
-    ENG, RUS, UKR = "English", "Russian", "Ukrainian"
+    ENG, UKR, RUS, = "English", "Ukrainian", "Russian"
 
     TESSERACT_LANGUAGES = {
        ENG: "eng",
-       RUS: "rus+eng",
        UKR: "ukr+eng",
-        }
+       RUS: "rus+eng",
+       }
 
     TESSERACT_CONFIGS_PATHS = {
-        ENG: bild_path(("data", "eng_code_config.txt")),
-        UKR: bild_path(("data", "сyrillic_eng_config.txt")),
-        RUS: bild_path(("data", "сyrillic_eng_config.txt"))
+        ENG: bild_path(("tesseract_configs", "eng_code_config.txt")),
+        UKR: bild_path(("tesseract_configs", "сyrillic_eng_config.txt")),
+        RUS: bild_path(("tesseract_configs", "сyrillic_eng_config.txt"))
     }
 
-    TRANSLATE_LANGS = {
-        ENG: "en",
-        RUS: "ru",
-        UKR: "uk"
-    }
