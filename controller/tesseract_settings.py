@@ -11,7 +11,7 @@ class TesseractSettings:
        }
 
     TESSERACT_CONFIGS_PATHS = {
-        ENG: bild_path(("tesseract_configs", "eng_code_config.txt")),
+        ENG: bild_path(("tesseract_configs", "eng_config.txt")),
         UKR: bild_path(("tesseract_configs", "сyrillic_eng_config.txt")),
         RUS: bild_path(("tesseract_configs", "сyrillic_eng_config.txt"))
     }

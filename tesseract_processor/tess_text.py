@@ -8,7 +8,7 @@ from tesseract_processor.find_empy_lines_ import find_empty_lines
 
 from tesseract_processor.functions import Functions
 from tesseract_processor.dict_keys import Keys
-from tesseract_processor.tess_cmd import TESS_CMD_PATH
+from tesseract_engine.tess_cmd import TESS_CMD_PATH
 
 
 class TesseractText(Functions):

@@ -18,7 +18,6 @@ from tesseract_processor.tess_text import TesseractText
 from text_buffer.buffer import TextBuffer
 
 
-
 class Controller:
     def __init__(self,
                  buffer: TextBuffer,

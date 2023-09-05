@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 # App data
-tesseract_data/Tesseract-OCR
+tesseract_data/Tesseract-OCR/
 
