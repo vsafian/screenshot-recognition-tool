@@ -1,4 +1,4 @@
-from tesseract_processor.constants import (TEXT, START_POINT, WIDTH)
+from tesseract_processor.dict_keys import Keys
 from tesseract_processor.use_cases import BildLineCase
 
 
@@ -20,24 +20,24 @@ def find_spaces_between_words(words_sizes: list[tuple[int, int]],
 def bild_text_line(group: list[dict],
                    pixel_width: int) -> str:
     order = [
-        word_info[START_POINT]
+        word_info[Keys.START_POINT]
         for word_info in group]
     order = sorted(order)
     sizes = [
-        word_info[WIDTH]
+        word_info[Keys.WIDTH]
         for point in order
         for word_info in group
-        if word_info[START_POINT] == point
+        if word_info[Keys.START_POINT] == point
     ]
     spaces = find_spaces_between_words(sizes, pixel_width)
     text_line = ""
     for index, point in enumerate(order):
         for word_info in group:
-            if word_info[START_POINT] == point:
+            if word_info[Keys.START_POINT] == point:
                 if index == 0:
-                    left_ident = word_info[START_POINT] // pixel_width
+                    left_ident = word_info[Keys.START_POINT] // pixel_width
                     text_line += " " * left_ident
-                text_line += word_info[TEXT]
+                text_line += word_info[Keys.TEXT]
         if index < len(spaces):
             text_line += " " * spaces[index]
     text_line += "\n"

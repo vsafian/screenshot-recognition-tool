@@ -1,4 +1,4 @@
-from tesseract_processor.constants import TOP_LEVEL
+from tesseract_processor.dict_keys import Keys
 from tesseract_processor.use_cases import EmptyLineCase
 
 
@@ -15,8 +15,8 @@ def find_empty_lines(top_groups: dict[int: tuple[int, int]],
     for index, group in top_groups.items():
         heights = []
         for word in word_data:
-            if word[TOP_LEVEL] in group:
-                heights.append(word[TOP_LEVEL])
+            if word[Keys.TOP_LEVEL] in group:
+                heights.append(word[Keys.TOP_LEVEL])
         heights_levels.append(min(heights))
     output = {}
 

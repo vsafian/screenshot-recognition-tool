@@ -7,16 +7,8 @@ from tesseract_processor.bild_text_line import bild_text_line
 from tesseract_processor.find_empy_lines_ import find_empty_lines
 
 from tesseract_processor.functions import Functions
-from tesseract_processor.constants import (
-    TESS_CMD_PATH,
-    WIDTH, HEIGHT,
-    TOP, LEFT, TEXT,
-    TOP_LEVEL,
-    START_POINT,
-    ENG_CONFIG
-)
-
-from screenshot_app.screenshot_tool import get_screenshot
+from tesseract_processor.dict_keys import Keys
+from tesseract_processor.tess_cmd import TESS_CMD_PATH
 
 
 class TesseractText(Functions):
@@ -29,11 +21,11 @@ class TesseractText(Functions):
             config=config, output_type=Output.DICT
         )
 
-        self.text_section = self.section(TEXT)
-        self.width_section = self.section(WIDTH)
-        self.height_section = self.section(HEIGHT)
-        self.top_section = self.section(TOP)
-        self.left_section = self.section(LEFT)
+        self.text_section = self.section(Keys.TEXT)
+        self.width_section = self.section(Keys.WIDTH)
+        self.height_section = self.section(Keys.HEIGHT)
+        self.top_section = self.section(Keys.TOP)
+        self.left_section = self.section(Keys.LEFT)
 
         self.indexation = [
             index
@@ -84,7 +76,7 @@ class TesseractText(Functions):
         self.top_positions = self.no_duplicates(
             self.get_list_dicts_data(
                 data=self.word_data,
-                key=TOP_LEVEL,
+                key=Keys.TOP_LEVEL,
                 sort_it=True
             )
         )
@@ -131,10 +123,10 @@ class TesseractText(Functions):
             top = top_pos - self.min_top
             top = self.value_or_zero(top)
             word_info.append({
-                TEXT: word,
-                TOP_LEVEL: top,
-                START_POINT: left,
-                WIDTH: (left, left + width),
+                Keys.TEXT: word,
+                Keys.TOP_LEVEL: top,
+                Keys.START_POINT: left,
+                Keys.WIDTH: (left, left + width),
             })
         return word_info
 
@@ -167,7 +159,7 @@ class TesseractText(Functions):
         for index, group in self.top_groups.items():
             current_group = []
             for word in self.word_data:
-                if word[TOP_LEVEL] in group:
+                if word[Keys.TOP_LEVEL] in group:
                     current_group.append(word)
             text_line = bild_text_line(group=current_group,
                                        pixel_width=self.pixel_width)
@@ -177,11 +169,3 @@ class TesseractText(Functions):
 
     def get_text(self) -> str:
         return self.text
-
-
-if __name__ == "__main__":
-    image = get_screenshot()
-    lang = "eng"
-    config = ENG_CONFIG
-    tess_data = TesseractText(image, lang, config)
-    image.close()
