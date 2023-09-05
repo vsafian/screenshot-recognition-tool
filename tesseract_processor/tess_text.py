@@ -8,19 +8,24 @@ from tesseract_processor.find_empy_lines_ import find_empty_lines
 
 from tesseract_processor.functions import Functions
 from tesseract_processor.dict_keys import Keys
-from tesseract_engine.tess_cmd import TESS_CMD_PATH
+from tesseract_processor.tess_cmd import TESS_CMD_PATH
 
 
 class TesseractText(Functions):
     def __init__(self, image: Image,
-                 language: str, config: str) -> None:
+                 language: str, config: str | None = None) -> None:
         self.text = ""
         pytesseract.tesseract_cmd = TESS_CMD_PATH
-        self.original_data = image_to_data(
-            image=image, lang=language,
-            config=config, output_type=Output.DICT
-        )
-
+        if config:
+            self.original_data = image_to_data(
+                image=image, lang=language,
+                config=config, output_type=Output.DICT
+            )
+        else:
+            self.original_data = image_to_data(
+                image=image, lang=language,
+                output_type=Output.DICT
+            )
         self.text_section = self.section(Keys.TEXT)
         self.width_section = self.section(Keys.WIDTH)
         self.height_section = self.section(Keys.HEIGHT)
